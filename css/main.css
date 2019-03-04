@@ -192,13 +192,9 @@ img {
 }
 
 .main-banner-slider-block {
-	display: none;
+	display: flex;
 	width: 100%;
 	position: absolute;
-}
-
-.current-slide {
-	display: flex;
 }
 
 .main-banner-description {

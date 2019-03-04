@@ -2,25 +2,25 @@
 
 $(() => {
 
-	// function sayHello () {
-	// 	$('#main-logo').on('click', function() {
-	// 		alert('Сука работает!! )))');
-	// 	});
-	// };
-	// sayHello();
+	function sayHello () {
+		$('#main-logo').on('click', function() {
+			alert('Сука работает!! )))');
+		});
+	};
+	sayHello();
 	
-	// function showHideSearchInput () {
-	// 	$('#icon-search').on('click', function (){
-	// 		$('#input-search').toggle('slow')
-	// 	});
+	function showHideSearchInput () {
+		$('#icon-search').on('click', function (){
+			$('#input-search').toggle('slow')
+		});
 		
-	// 	$('#input-search').keyup(function(event){
-	// 		if(event.keyCode == 13) {
-	// 			$(this).css({'display':'none', 'transition':'.5s'})
-	// 		};
-	// 	});
-	// };
-	// showHideSearchInput();	
+		$('#input-search').keyup(function(event){
+			if(event.keyCode == 13) {
+				$(this).css({'display':'none', 'transition':'.5s'})
+			};
+		});
+	};
+	showHideSearchInput();	
 		
 
 
@@ -74,9 +74,9 @@ $(() => {
 	// playCarousel()
 
 
-	var carousel = [
+	var mainBannerCarousel = [
 		{
-			'avatar': {'url': './assets/img/avatar-jane.png'},
+			'avatarUrl': './assets/img/avatar-jane.png',
 			'stylistName': 'Jane',
 			'product': [
 							{
@@ -96,10 +96,10 @@ $(() => {
 								'title':  'Shirt' 
 							}
 						],
-			'mainImg': {'url': './assets/img/man-slide-1.png'},
+			'mainImgUrl': './assets/img/man-slide-1.png',
 		},
 		{
-			'avatar': {'url': './assets/img/avatar-zoi.png'},
+			'avatarUrl': './assets/img/avatar-zoi.png',
 			'stylistName': 'Zoi',
 			'product': [
 							{
@@ -119,10 +119,10 @@ $(() => {
 								'title':  'Robot' 
 							}
 						],
-			'mainImg': {'url': './assets/img/woman-slide-2.png'},
+			'mainImgUrl': './assets/img/woman-slide-2.png',
 		},
 		{
-			'avatar': {'url': './assets/img/avatar-anna.png'},
+			'avatarUrl': './assets/img/avatar-anna.png',
 			'stylistName': 'Anna',
 			'product': [
 							{
@@ -142,99 +142,26 @@ $(() => {
 								'title':  'Bag' 
 							}
 						],
-			'mainImg': {'url': './assets/img/woman-slide-3.png'},
-		},
+			'mainImgUrl': './assets/img/woman-slide-3.png',
+		}
 	];
 
-	// var indexSlide = 0;
+	var indexSlide = 0;
 
-	// $('#slider-wraper').append("\
-	// 					<div class="main-banner-slider-block">\
-	// 						<div class="main-banner-description">\
-	// 							<div class="main-banner-greeting">\
-	// 								<p>Thank you, John for using our TaxFree4U service!</p>\
-	// 								<img src="./assets/img/divider.png">\
-	// 								<p>Here’s some items you might like</p>\
-	// 								<a href="#">See all my looks</a>\
-	// 							</div>\
-	// 							<div class="main-banner-decoration">\
-	// 								<div class="big-rhombus">\
-	// 									<div class="stylist-review">\
-	// 										<img src="./assets/img/avatar-jane.png" alt="Jane">\
-	// 										<img src="./assets/img/row-1.png" alt="row">\
-	// 										<p>Made by Jany</p>\
-	// 										<div class="star-rating">\
-	// 											<ul>\
-	// 												<li>\
-	// 													<span href="#" class="icon-star-empty" title="1 star"></span>\
-	// 												</li>\
-	// 												<li>\
-	// 													<span href="#" class="icon-star-empty" title="2 stars"></span>\
-	// 												</li>\
-	// 												<li>\
-	// 													<span href="#" class="icon-star-empty" title="3 stars"></span>\
-	// 												</li>\
-	// 												<li>\
-	// 													<span href="#" class="icon-star-empty" title="4 stars"></span>\
-	// 												</li>\
-	// 												<li>\
-	// 													<span href="#" class="icon-star-empty" title="5 stars"></span>\
-	// 												</li>\
-	// 											</ul>\
-	// 										</div>\
-	// 									</div>\
-	// 								</div>\
-	// 								<div class="list-small-rhombuses">\
-	// 									<div class="small-rhombus-with-price">\
-	// 										<div class="price">\
-	// 											<p>$500</p>\
-	// 											<div class="divider"></div>\
-	// 											<p>Trousers</p>\
-	// 										</div>\
-	// 									</div>\
-	// 									<div class="small-rhombus-with-price">\
-	// 										<div class="price">\
-	// 											<p>$1350</p>\
-	// 											<div class="divider"></div>\
-	// 											<p>Jacket</p>\
-	// 										</div>\
-	// 									</div>\
-	// 									<div class="small-rhombus-with-price">\
-	// 										<div class="price">\
-	// 											<p>$900</p>\
-	// 											<div class="divider"></div>\
-	// 											<p>Shoes</p>\
-	// 										</div>\
-	// 									</div>\
-	// 									<div class="small-rhombus-with-price">\
-	// 										<div class="price">\
-	// 											<p>$230</p>\
-	// 											<div class="divider"></div>\
-	// 											<p>Shirt</p>\
-	// 										</div>\
-	// 									</div>\
-	// 								</div>\
-	// 							</div>\					
-	// 						</div>\
-	// 						<div class="main-banner-img">\
-	// 							<img src="./assets/img/man-slide-1.png" alt="man">\
-	// 						</div>\
-	// 					</div>\
-	// 				")
 
-	$('#slider-wraper').append("
+	var mainBannerSlide = $('#slider-wraper').append(`
 						<div class="main-banner-slider-block">
 							<div class="main-banner-description">
 								<div class="main-banner-greeting">
 									<p>Thank you, John for using our TaxFree4U service!</p>
-									<img src="./assets/img/divider.png">
+									<img src="./assets/img/divider.png" alt="divider">
 									<p>Here’s some items you might like</p>
 									<a href="#">See all my looks</a>
 								</div>
 								<div class="main-banner-decoration">
 									<div class="big-rhombus">
 										<div class="stylist-review">
-											<img src="./assets/img/avatar-jane.png" alt="Jane">
+											<img src=${mainBannerCarousel[indexSlide].avatarUrl} alt="Jane">
 											<img src="./assets/img/row-1.png" alt="row">
 											<p>Made by Jany</p>
 											<div class="star-rating">
@@ -294,7 +221,89 @@ $(() => {
 								<img src="./assets/img/man-slide-1.png" alt="man">
 							</div>
 						</div>
-					")
+					`)
+
+function playGallery (selector, obj) {
+	$('#main-banner-arrow-right').on('click', function (event) {
+		indexSlide ++
+		console.log(indexSlide)
+		$(selector).html(`
+						<div class="main-banner-slider-block">
+							<div class="main-banner-description">
+								<div class="main-banner-greeting">
+									<p>Thank you, John for using our TaxFree4U service!</p>
+									<img src="./assets/img/divider.png" alt="divider">
+									<p>Here’s some items you might like</p>
+									<a href="#">See all my looks</a>
+								</div>
+								<div class="main-banner-decoration">
+									<div class="big-rhombus">
+										<div class="stylist-review">
+											<img src=${obj[indexSlide].avatarUrl} alt="Jane">
+											<img src="./assets/img/row-1.png" alt="row">
+											<p>Made by ${obj[indexSlide].stylistName}</p>
+											<div class="star-rating">
+												<ul>
+													<li>
+														<span href="#" class="icon-star-empty" title="1 star"></span>
+													</li>
+													<li>
+														<span href="#" class="icon-star-empty" title="2 stars"></span>
+													</li>
+													<li>
+														<span href="#" class="icon-star-empty" title="3 stars"></span>
+													</li>
+													<li>
+														<span href="#" class="icon-star-empty" title="4 stars"></span>
+													</li>
+													<li>
+														<span href="#" class="icon-star-empty" title="5 stars"></span>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+									<div class="list-small-rhombuses">
+										<div class="small-rhombus-with-price">
+											<div class="price">
+												<p>$500</p>
+												<div class="divider"></div>
+												<p>Trousers</p>
+											</div>
+										</div>
+										<div class="small-rhombus-with-price">
+											<div class="price">
+												<p>$1350</p>
+												<div class="divider"></div>
+												<p>Jacket</p>
+											</div>
+										</div>
+										<div class="small-rhombus-with-price">
+											<div class="price">
+												<p>$900</p>
+												<div class="divider"></div>
+												<p>Shoes</p>
+											</div>
+										</div>
+										<div class="small-rhombus-with-price">
+											<div class="price">
+												<p>$230</p>
+												<div class="divider"></div>
+												<p>Shirt</p>
+											</div>
+										</div>
+									</div>
+								</div>			
+							</div>
+							<div class="main-banner-img">
+								<img src="./assets/img/man-slide-1.png" alt="man">
+							</div>
+						</div>
+					`)
+	})
+} 
+playGallery('#slider-wraper', mainBannerCarousel)
+
 
 
 
