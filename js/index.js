@@ -4,7 +4,7 @@ $(() => {
 
 	function sayHello () {
 		$('#main-logo').on('click', function() {
-			alert('Сука работает!! )))');
+			alert('работает!! )))');
 		});
 	};
 	sayHello();
@@ -16,7 +16,7 @@ $(() => {
 		
 		$('#input-search').keyup(function(event){
 			if(event.keyCode == 13) {
-				$(this).css({'display':'none', 'transition':'.5s'})
+				$(this).css({'display':'none', 'transition':'.5s'})  /*убрать инлайновые стили, заменить на классы*/
 			};
 		});
 	};
@@ -148,8 +148,9 @@ $(() => {
 
 	var indexSlide = 0;
 
-
-	var mainBannerSlide = $('#slider-wraper').append(`
+	function showFirstSlide () {
+		$('#slider-wraper').replaceWith(`
+					<div class="slider-wraper" id="slider-wraper">
 						<div class="main-banner-slider-block">
 							<div class="main-banner-description">
 								<div class="main-banner-greeting">
@@ -163,7 +164,7 @@ $(() => {
 										<div class="stylist-review">
 											<img src=${mainBannerCarousel[indexSlide].avatarUrl} alt="Jane">
 											<img src="./assets/img/row-1.png" alt="row">
-											<p>Made by Jany</p>
+											<p>Made by ${mainBannerCarousel[indexSlide].stylistName}</p>
 											<div class="star-rating">
 												<ul>
 													<li>
@@ -188,121 +189,77 @@ $(() => {
 									<div class="list-small-rhombuses">
 										<div class="small-rhombus-with-price">
 											<div class="price">
-												<p>$500</p>
+												<p>${mainBannerCarousel[indexSlide].product[0].price}</p>
 												<div class="divider"></div>
-												<p>Trousers</p>
+												<p>${mainBannerCarousel[indexSlide].product[0].title}</p>
 											</div>
 										</div>
 										<div class="small-rhombus-with-price">
 											<div class="price">
-												<p>$1350</p>
+												<p>${mainBannerCarousel[indexSlide].product[1].price}</p>
 												<div class="divider"></div>
-												<p>Jacket</p>
+												<p>${mainBannerCarousel[indexSlide].product[1].title}</p>
 											</div>
 										</div>
 										<div class="small-rhombus-with-price">
 											<div class="price">
-												<p>$900</p>
+												<p>${mainBannerCarousel[indexSlide].product[2].price}</p>
 												<div class="divider"></div>
-												<p>Shoes</p>
+												<p>${mainBannerCarousel[indexSlide].product[2].title}</p>
 											</div>
 										</div>
 										<div class="small-rhombus-with-price">
 											<div class="price">
-												<p>$230</p>
+												<p>${mainBannerCarousel[indexSlide].product[3].price}</p>
 												<div class="divider"></div>
-												<p>Shirt</p>
+												<p>${mainBannerCarousel[indexSlide].product[3].title}</p>
 											</div>
 										</div>
 									</div>
 								</div>			
 							</div>
 							<div class="main-banner-img">
-								<img src="./assets/img/man-slide-1.png" alt="man">
+								<img src="${mainBannerCarousel[indexSlide].mainImgUrl}" alt="man">
 							</div>
 						</div>
+					</div>
 					`)
+	};
+	showFirstSlide();
 
-function playGallery (selector, obj) {
+	function createGallerySelector () {
+		for (var i = 0; i < mainBannerCarousel.length; i++) {
+			$('#carousel-selectors ul').append(`
+				<li>
+					<a>
+						<i class="fas fa-circle"></i>
+					</a>
+				</li>
+			`);
+		};
+		$('#carousel-selectors li:first').addClass('current-selector');
+		// console.log($('#carousel-selectors ul').index());
+	};
+	createGallerySelector();
+
 	$('#main-banner-arrow-right').on('click', function (event) {
+		event.preventDefault();
 		indexSlide ++
-		console.log(indexSlide)
-		$(selector).html(`
-						<div class="main-banner-slider-block">
-							<div class="main-banner-description">
-								<div class="main-banner-greeting">
-									<p>Thank you, John for using our TaxFree4U service!</p>
-									<img src="./assets/img/divider.png" alt="divider">
-									<p>Here’s some items you might like</p>
-									<a href="#">See all my looks</a>
-								</div>
-								<div class="main-banner-decoration">
-									<div class="big-rhombus">
-										<div class="stylist-review">
-											<img src=${obj[indexSlide].avatarUrl} alt="Jane">
-											<img src="./assets/img/row-1.png" alt="row">
-											<p>Made by ${obj[indexSlide].stylistName}</p>
-											<div class="star-rating">
-												<ul>
-													<li>
-														<span href="#" class="icon-star-empty" title="1 star"></span>
-													</li>
-													<li>
-														<span href="#" class="icon-star-empty" title="2 stars"></span>
-													</li>
-													<li>
-														<span href="#" class="icon-star-empty" title="3 stars"></span>
-													</li>
-													<li>
-														<span href="#" class="icon-star-empty" title="4 stars"></span>
-													</li>
-													<li>
-														<span href="#" class="icon-star-empty" title="5 stars"></span>
-													</li>
-												</ul>
-											</div>
-										</div>
-									</div>
-									<div class="list-small-rhombuses">
-										<div class="small-rhombus-with-price">
-											<div class="price">
-												<p>$500</p>
-												<div class="divider"></div>
-												<p>Trousers</p>
-											</div>
-										</div>
-										<div class="small-rhombus-with-price">
-											<div class="price">
-												<p>$1350</p>
-												<div class="divider"></div>
-												<p>Jacket</p>
-											</div>
-										</div>
-										<div class="small-rhombus-with-price">
-											<div class="price">
-												<p>$900</p>
-												<div class="divider"></div>
-												<p>Shoes</p>
-											</div>
-										</div>
-										<div class="small-rhombus-with-price">
-											<div class="price">
-												<p>$230</p>
-												<div class="divider"></div>
-												<p>Shirt</p>
-											</div>
-										</div>
-									</div>
-								</div>			
-							</div>
-							<div class="main-banner-img">
-								<img src="./assets/img/man-slide-1.png" alt="man">
-							</div>
-						</div>
-					`)
-	})
-} 
-playGallery('#slider-wraper', mainBannerCarousel)
+		showFirstSlide();
+	});
+
+	$('#main-banner-arrow-left').on('click', function (event) {
+		event.preventDefault();
+		indexSlide --;
+		showFirstSlide();
+	});
+
+	$('#carousel-selectors li').on('click', function (event){
+		
+	});
+
+	
+
 
 
 

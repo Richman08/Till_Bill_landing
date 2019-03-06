@@ -339,11 +339,12 @@ img {
 }
 
 .carousel-selectors {
+	display: flex;
 	min-width: 3%;
 }
 
 .carousel-selectors i {
-	padding: 2px;
+	padding: 5px;
 }
 
 .carousel-selectors .fa-circle {
