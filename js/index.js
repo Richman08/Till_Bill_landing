@@ -193,17 +193,17 @@ $(() => {
 	};
 	addClass();
 
-	var timerId = setTimeout (function tick () {
+	var autoplayMainBannerGallery = setTimeout (function tick () {
 		indexSlide < mainBannerCarousel.length-1 ? indexSlide ++ : indexSlide = 0;
 		createGallerySlide();
 		$('#carousel-selectors li').removeClass('current-selector');
 		addClass();
-		timerId = setTimeout(tick, 2000);
+		autoplayMainBannerGallery = setTimeout(tick, 2000);
 	}, 2000);
 
 	var nextSlide = $('#main-banner-arrow-right').on('click', function next (event) {
 		event.preventDefault();
-		clearTimeout(timerId);
+		clearTimeout(autoplayMainBannerGallery);
 		indexSlide < mainBannerCarousel.length-1 ? indexSlide ++ : indexSlide = 0;
 		createGallerySlide();
 		$('#carousel-selectors li').removeClass('current-selector');
@@ -212,7 +212,7 @@ $(() => {
 
 	var prevSlide = $('#main-banner-arrow-left').on('click', function (event) {
 		event.preventDefault();
-		clearTimeout(timerId);
+		clearTimeout(autoplayMainBannerGallery);
 		indexSlide > 0 ? indexSlide -- : indexSlide = mainBannerCarousel.length-1;
 		createGallerySlide();
 		$('#carousel-selectors li').removeClass('current-selector');
@@ -221,7 +221,7 @@ $(() => {
 
 	$('#carousel-selectors li').on('click', function (event) {
 		event.preventDefault();
-		clearTimeout(timerId);
+		clearTimeout(autoplayMainBannerGallery);
 		$('#carousel-selectors li').removeClass('current-selector');
 		indexSlide = $(this).index();
 		addClass();

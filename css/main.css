@@ -166,7 +166,7 @@ img {
 .carousel-wraper {
 	width: 100%;
 	display: flex;
-	min-height: 420px;
+	min-height: 430px;
 }
 
 .icon-arrow {
@@ -339,8 +339,8 @@ img {
 }
 
 .carousel-selectors {
-	display: flex;
-	min-width: 3%;
+	height: 15px;
+    width: 15px;
 }
 
 .carousel-selectors i {
@@ -348,6 +348,7 @@ img {
 }
 
 .carousel-selectors .fa-circle {
+	display: flex;
 	font-size: 5px;
 	color: #676767;
 }
