@@ -314,18 +314,18 @@ $(() => {
 	};
 	createRecomendationGallerySlide ();
  	
- 	var autoplayRecomendationGallery = {
- 		handle: 0,
- 		start: () => {
- 			// this.stop();
- 			this.handle = setTimeout (function tick () {
-			 				indexSlide < recomendationGallery.length-1 ? indexSlide ++ : indexSlide = 0;
-			 				createRecomendationGallerySlide();
-			 				this.handle = setTimeout (tick, 1500);
-			 			}, 1500);
- 		},
- 		stop: () => clearTimeout(this.handle)
- 	};
+ 	// var autoplayRecomendationGallery = {
+ 	// 	handle: 0,
+ 	// 	start: () => {
+ 	// 		// this.stop();
+ 	// 		this.handle = setTimeout (function tick () {
+		// 	 				indexSlide < recomendationGallery.length-1 ? indexSlide ++ : indexSlide = 0;
+		// 	 				createRecomendationGallerySlide();
+		// 	 				this.handle = setTimeout (tick, 1500);
+		// 	 			}, 1500);
+ 	// 	},
+ 	// 	stop: () => clearTimeout(this.handle)
+ 	// };
 
  	$(window).scroll(function (event) {
 		if ($(window).scrollTop() > 120) {
@@ -355,17 +355,22 @@ $(() => {
  		createRecomendationGallerySlide ()
  	});
 
-
 	var video = $('#custom-video')[0];
  	var playButton = $('.video-play-btn');
  	var pauseButton = $('.video-pause-btn');
  	var fullScreenButton = $('#full-screen-btn')[0];
  	var windowScreenButton = $('#window-screen-btn');
  	var seekBar = $('#seek-bar')[0];
- 	// var time = video.duration * (seekBar.value / 100);
 
 
- 	// video.currentTime = time;
+	$(seekBar).on('change', function(event) {
+		var time = video.duration * (seekBar.value / 100);
+ 		video.currentTime = time;
+	});
+
+	$(video).on('timeupdate', function(event){
+		seekBar.value = video.currentTime 
+	})
 
  	function videoPlayPause () {
  		video.paused == false ? video.pause() : video.play();
