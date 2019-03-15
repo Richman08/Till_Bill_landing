@@ -468,6 +468,10 @@ img {
 	margin: 0 auto;
 }
 
+.recomedationGalleryWrapper {
+	display: flex;
+}
+
 .stylist {
  	display: flex;
  	margin: 35px 35px 0 0;
@@ -591,13 +595,29 @@ img {
 
 .video-control-buttons {
 	display: flex;
-	justify-content: space-around;
+	justify-content: space-between;
 	width: 100%;
+	margin: 10px 15px;
+}
+
+.play-pause-btns {
+	position: relative;
 }
 
 .video-control-buttons img {
 	height: content;
 	align-self: center;
+}
+
+.hide-video-btn {
+	display: none;
+	position: absolute;
+	left: 0;
+}
+
+.hide-video-deco {
+	opacity: 0;
+	z-index: -1;
 }
 
 .progress-bar-container {
@@ -739,7 +759,6 @@ img {
 }
 
 .gallery-looks img {
-	width: 70%;
 	max-height: 165px;
 	object-fit: contain;
 }
@@ -754,6 +773,7 @@ img {
 	width: 100%;
 	height: 50px;
 	background-color: rgba(255, 255, 255, 0.8);
+	transition: .6s;
 }
 
 .latest-looks:hover .stylist-info {
@@ -872,19 +892,36 @@ img {
 }
 
 .product-listing ul li {
-	margin: 0 5px;
+	margin: 0 2px;
 	font-size: 6px;
-	text-align: center;
+}
+
+.product-listing .fa-circle {
+	font-size: 5px;
+	color: #676767;
 }
 
 .product-listing i {
-	color: #8a8a8a;
+	padding: 5px;
+}
+
+.product-listing ul li a:hover {
+	opacity: .6;
+}
+
+#product-gallery-wraper {
+	display: flex;
+	width: 75%;
+}
+
+.current-color-selector {
+	opacity: .7;
 }
 
 .product-block {
 	display: flex;
 	flex-wrap: wrap;
-	width: 25%;
+	width: 33.33333%;
 	background-color: #fff;
     margin: 20px;
     padding: 5px;
@@ -895,7 +932,7 @@ img {
 	display: flex;
 	flex-wrap: nowrap;
 	width: 100%;
-	min-height: 78%;
+	min-height: 82%;
     padding: 10px;
     border: 1px solid #f3f3f3;
 }
@@ -944,15 +981,15 @@ img {
 	cursor: pointer;
 }
 
-.product-color .gray {
+.product-color ul li:nth-child(1) i {
 	color: #838383;
 }
 
-.product-color .red {
-	color: #804a43;
+.product-color ul li:nth-child(2) i {
+	color: #b52d1c;
 }
 
-.product-color .blue {
+.product-color ul li:nth-child(3) i {
 	color: #435c80;
 }
 
@@ -960,6 +997,7 @@ img {
 	display: flex;
 	align-self: center;
 	margin: 0 auto;
+	max-height: 247px;
 }
 
 .product-info {
@@ -993,12 +1031,12 @@ img {
 .product-name:hover p {
 	opacity: 0;
 	cursor: pointer;
-	transition: .5s;
+	transition: .4s;
 }
 
 .product-name:hover .action-icons {
 	opacity: 1;
-	transition: .5s .4s;
+	transition: .4s .2s;
 	cursor: pointer;
 	justify-content: center;
 }
