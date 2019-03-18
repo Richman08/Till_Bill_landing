@@ -1,13 +1,6 @@
 "use strict";
 
 $(() => {
-
-	function sayHello () {
-		$('#main-logo').on('click', function() {
-			alert('Hello');
-		});
-	};
-	sayHello();
 	
 	function showHideSearchInput () {
 		$('#icon-search').on('click', function (){
@@ -362,6 +355,14 @@ $(() => {
  	var windowScreenButton = $('#window-screen-btn');
  	var seekBar = $('#seek-bar')[0];
 
+ 	video.onloadedmetadata = function () {
+ 		var totalMin = Math.floor(video.duration / 60);
+ 		totalMin = totalMin < 10 ? '0' + totalMin : totalMin;
+ 		$('#total-min').text(totalMin);
+ 		var totalSec = Math.floor(video.duration % 60);
+ 		totalSec = totalSec < 10 ? '0' + totalSec : totalSec;
+ 		$('#total-sec').text(totalSec);
+ 	};
 
 	$(seekBar).on('change', function(event) {
 		var time = video.duration * (seekBar.value / 100);
@@ -369,8 +370,20 @@ $(() => {
 	});
 
 	$(video).on('timeupdate', function(event){
-		seekBar.value = video.currentTime 
-	})
+		seekBar.value = this.currentTime * (100 / this.duration);
+		var currentMin = Math.floor(this.currentTime / 60);
+ 		currentMin = currentMin < 10 ? '0' + currentMin : currentMin;
+ 		$('#current-min').text(currentMin);
+ 		var currentSec = Math.floor(this.currentTime % 60);
+ 		currentSec = currentSec < 10 ? '0' + currentSec : currentSec;
+ 		$('#current-sec').text(currentSec);
+ 		if(this.currentTime === this.duration) {
+ 			this.load();	
+ 			$(pauseButton).addClass('hide-video-btn');
+ 			$(playButton).removeClass('hide-video-btn');
+ 			$('.video-deco').removeClass('hide-video-deco');
+ 			};
+	});
 
  	function videoPlayPause () {
  		video.paused == false ? video.pause() : video.play();

@@ -609,6 +609,14 @@ img {
 	align-self: center;
 }
 
+.video-control-buttons .time {
+	display: flex;
+}
+
+.time span {
+	color: #fff;
+}
+
 .hide-video-btn {
 	display: none;
 	position: absolute;
@@ -624,7 +632,7 @@ img {
 	display: flex;
 	align-self: center;
 	height: 3px;
-	width: 730px;	
+	width: 75%;	
 }
 
 .progress-bar-container input {
