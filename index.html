@@ -96,10 +96,16 @@
 <!-- ----------------------------------------------------- -->
 					<div class="player-calculator">
 						<div class="video-player-container">
-							<video  poster="./assets/img/video-poster-blur.jpg" src="./assets/video/sluga-naroda-soundtrack.mp4"  id="custom-video">
-							</video>
+							<div class="default-video">
+								<video src="./assets/video/sluga-naroda-soundtrack.mp4"  id="custom-video">
+								</video>
+							</div>
+							
 	
 							<div class="custom-video-container">
+								<div class="bg-poster-blur video-deco">
+									<img src="./assets/img/video-poster-blur.jpg">
+								</div>
 								<div class="title video-deco">
 									<h2>Get the best opportunities from shopping: fashion looks, personal stylist assistance and tax free refund in one!</h2>
 									<img src="./assets/img/divider-white.png">
@@ -112,8 +118,8 @@
 										</a>
 									</div>
 								</div>
-								
-								<div class="video-control-buttons">
+							</div>
+							<div class="video-control-buttons">
 									<div class="play-pause-btns">
 										<a href="#" class="video-play-btn">
 											<img src="./assets/img/button-play-small.png">
@@ -128,23 +134,28 @@
 											<span>:</span>
 											<span id="current-sec">00</span>
 										</div>
-										<span>&nbsp;</span>
-										<span>/</span>
-										<span>&nbsp;</span>
+										<span>&nbsp;/&nbsp;</span>
 										<div class="total-time">
 											<span id="total-min">00</span>
 											<span>:</span>
 											<span id="total-sec">00</span>
 										</div>
 									</div>
+									<div class="volume-slider">
+										<input type="range" id="volume-slider" value="50">
+									</div>
 									
 									<div class="progress-bar-container">
 										<input type="range" id="seek-bar" value="0">
 									</div>
-									<a href="#" id="full-screen-btn">
-										<img src="./assets/img/button-fullscreen.png">
-									</a>
-								</div>	
+									<div class="fullscrren-mode">
+										<a href="#" class="full-screen-btn">
+											<img src="./assets/img/button-fullscreen.png">
+										</a>
+										<a href="#" class="window-screen-btn  hide-video-btn">
+											<img src="./assets/img/button-window-screen.png">
+										</a>
+									</div>
 							</div>
 						</div>
 							
@@ -315,7 +326,11 @@
 				</div>
 				</div>
 			</div>
-			<script src="./js/index.js"></script>
+			<script src="./js/main-banner.js"></script>
+			<script src="./js/recomendation-gallery.js"></script>
+			<script src="./js/video-player.js"></script>
+			<script src="./js/looks-galleries.js"></script>
+			<script src="./js/product-gallery.js"></script>
 		</body>
 	</html>
 
