@@ -563,10 +563,50 @@ img {
 	top: 0;
 	padding: 10px;
 	min-height: 100%;
-	/*align-content: space-between;*/
 }
 
+.preloader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    background-color: #000;
+    opacity: 0.8;
+    z-index: 4;
+    height: 100%;
+    width: 100%;
+    transition: 1.5s all;
+    visibility: visible;
+}
 
+.loader {
+	position: absolute;
+    width: 75px;
+    height: 75px;
+    border: 2px solid #a7b3b3;
+    border-top-color: #fff;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    z-index: 5;
+    transform: translate(-50%, -50%);
+    animation: 1s spin infinite linear;
+}
+
+.loaded {
+	opacity: 0;
+	z-index: 0;
+	visibility: hidden;
+}
+
+@keyframes spin {
+	from {
+		transform: translate(-50%, -50%) rotate(0deg);
+	}
+	to {
+		transform: translate(-50%, -50%) rotate(360deg);
+	}
+}
 
 .bg-poster-blur {
 	position: absolute;
@@ -617,13 +657,19 @@ img {
     left: 100px;
  }
 
-.video-player-container .video-control-buttons {
+.video-control-buttons {
 	display: flex;
 	position: absolute;
 	bottom: 10px;
 	justify-content: space-between;
 	min-width: 840px;
 	padding: 10px 15px;
+	z-index: 3;
+}
+
+.fullscreen-mode {
+	/*position: static;*/
+	/*width: 100%;*/
 	z-index: 2147483648;
 }
 
@@ -693,8 +739,6 @@ img {
 .fullscrren-mode {
 	width: 2%;
 }
-
-
 
 .calculator-looks {
 	display: flex;

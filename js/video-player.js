@@ -8,8 +8,13 @@ $(() => {
  	var windowScreenButton = $('.window-screen-btn')[0];
  	var volumeSlider = $('#volume-slider')[0];
  	var seekBar = $('#seek-bar')[0];
+ 	var preloader = $('#preloader');
+	var loader = $('#loader');
+
+ 	console.dir(video)
 
  	video.onloadedmetadata = function () {
+ 		console.log(video.readyState);
  		var totalMin = Math.floor(video.duration / 60);
  		totalMin = totalMin < 10 ? '0' + totalMin : totalMin;
  		$('#total-min').text(totalMin);
@@ -17,6 +22,7 @@ $(() => {
  		totalSec = totalSec < 10 ? '0' + totalSec : totalSec;
  		$('#total-sec').text(totalSec);
  	};
+ 	video.onloadedmetadata();
 
 	$(volumeSlider).on('change', function(event) {
 		var sound = volumeSlider.value / 100;
@@ -29,6 +35,7 @@ $(() => {
 	});
 
 	$(video).on('timeupdate', function(event){
+		console.log(video.readyState);
 		seekBar.value = this.currentTime * (100 / this.duration);
 		var currentMin = Math.floor(this.currentTime / 60);
  		currentMin = currentMin < 10 ? '0' + currentMin : currentMin;
@@ -42,7 +49,17 @@ $(() => {
  			$(pauseButton).addClass('hide-video-btn');
  			$(playButton).removeClass('hide-video-btn');
  			$('.video-deco').removeClass('hide-video-deco');
- 			};
+ 		};
+	});
+
+	$(video).on('waiting', function(event) {
+		$(preloader).addClass('preloader');
+		$(loader).addClass('loader');
+	});
+
+	$('video').on('playing', function (event) {
+		$(preloader).removeClass('preloader');
+		$(loader).removeClass('loader');
 	});
 
  	function togglePlay () {
@@ -66,7 +83,14 @@ $(() => {
 
  	$(fullScreenButton).on('click', function (event) {
  		event.preventDefault();
- 		video.requestFullscreen();
+ 		if(video.requestFullScreen){
+			video.requestFullScreen();
+		} else if(video.webkitRequestFullScreen){
+			video.webkitRequestFullScreen();
+		} else if(video.mozRequestFullScreen){
+			video.mozRequestFullScreen();
+		};
+		$('.video-control-buttons').addClass('fullscreen-mode');
  	});
 
 });
