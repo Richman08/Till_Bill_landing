@@ -14,7 +14,6 @@ $(() => {
  	console.dir(video)
 
  	video.onloadedmetadata = function () {
- 		console.log(video.readyState);
  		var totalMin = Math.floor(video.duration / 60);
  		totalMin = totalMin < 10 ? '0' + totalMin : totalMin;
  		$('#total-min').text(totalMin);
@@ -35,7 +34,6 @@ $(() => {
 	});
 
 	$(video).on('timeupdate', function(event){
-		console.log(video.readyState);
 		seekBar.value = this.currentTime * (100 / this.duration);
 		var currentMin = Math.floor(this.currentTime / 60);
  		currentMin = currentMin < 10 ? '0' + currentMin : currentMin;

@@ -554,6 +554,34 @@ img {
   display: none !important;
 }
 
+/*.default-video video:fullscreen {
+    background-color: rgba(255,255,255,0);
+    z-index: 0;
+}
+.default-video video:-webkit-full-screen {
+    background-color: rgba(255,255,255,0);
+    z-index: 0;
+}
+.default-video video:-moz-full-screen {
+    background-color: rgba(255,255,255,0);
+    z-index: 0;
+}
+
+.default-video video:not(:root):-webkit-full-screen {
+	top: 50px !important;
+	position: absolute !important;
+	height: 50% !important;
+}
+
+.default-video video:not(:root):-webkit-full-screen::backdrop {
+    position: absolute ! important;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background: red;
+}*/
+
 .video-player-container .custom-video-container {
 	display: flex;
 	flex-wrap: wrap;
